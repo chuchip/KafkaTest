@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class KafkaTestController {
-
 	@Autowired
 	KafkaMessageProducer kafkaMessageProducer;
+	
 	@PostMapping("/add/{topic}")
 	public void addIdCustomer( @PathVariable String topic,@RequestBody  String body)
 	{
