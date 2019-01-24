@@ -16,7 +16,5 @@ public class KafkaTestController {
 	public void addIdCustomer( @PathVariable String topic,@RequestBody  String body)
 	{
 		kafkaMessageProducer.sendMessage(topic,body);
-		return;
 	}
-
 }
