@@ -13,13 +13,13 @@ public class KafkaMessageProducer {
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
 
-	@Value(value = "${message.topic.name:profesorp}")
+	@Value("${message.topic.name:profesorp}")
 	private String topicName;	
 	
-	public void sendMessage(String topic,String message) {
+	public void sendMessage(String topic,String key,String message) {
 		if (topic==null || topic.trim().equals(""))
 			topic=topicName;
-		ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, message);
+		ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic,key, message);
 
 		future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 			@Override
